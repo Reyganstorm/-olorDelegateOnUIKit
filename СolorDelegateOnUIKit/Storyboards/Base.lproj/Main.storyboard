@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="97.767857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting Color View Controller-->
         <scene sceneID="p6s-JC-4yR">
             <objects>
-                <viewController id="lQ1-Ez-dH2" sceneMemberID="viewController">
+                <viewController id="lQ1-Ez-dH2" customClass="SettingColorViewController" customModule="СolorDelegateOnUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XbZ-aF-kvL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
