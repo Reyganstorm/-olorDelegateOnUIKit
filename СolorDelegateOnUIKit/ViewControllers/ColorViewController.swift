@@ -29,8 +29,7 @@ class ColorViewController: UIViewController {
         green = CGFloat(colorValue.greenValue)
         blue = CGFloat(colorValue.blueValue)
         
-        
-        
+        setColor()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,6 +38,14 @@ class ColorViewController: UIViewController {
         settingsVC.colorValue = colorValue
         settingsVC.delegate = self
     }
+    
+    private func setColor() {
+       view.backgroundColor = UIColor(
+           red: red,
+           green: green,
+           blue: blue,
+           alpha: 1)
+   }
 
 }
 

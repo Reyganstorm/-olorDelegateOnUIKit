@@ -38,9 +38,9 @@ class SettingColorViewController: UIViewController {
         greenTextField.delegate = self
         blueTextField.delegate = self
         
-        redTextField.text = String(colorValue.redValue)
-        greenTextField.text = String(colorValue.greenValue)
-        blueTextField.text = String(colorValue.blueValue)
+//        redTextField.text = String(colorValue.redValue)
+//        greenTextField.text = String(colorValue.greenValue)
+//        blueTextField.text = String(colorValue.blueValue)
         
     }
     
