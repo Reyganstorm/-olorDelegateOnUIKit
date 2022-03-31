@@ -99,23 +99,14 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UNe-Jv-JTb">
                                                 <rect key="frame" x="-2" y="0.0" width="164" height="31"/>
                                                 <color key="thumbTintColor" red="0.98825353384017944" green="0.18555337190628052" blue="0.016360459849238396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="rgbSlider:" destination="lQ1-Ez-dH2" eventType="valueChanged" id="J65-Vq-AZW"/>
-                                                </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cUh-HV-TPp">
                                                 <rect key="frame" x="-2" y="50" width="164" height="31"/>
                                                 <color key="thumbTintColor" systemColor="systemGreenColor"/>
-                                                <connections>
-                                                    <action selector="rgbSlider:" destination="lQ1-Ez-dH2" eventType="valueChanged" id="bh3-mn-cWZ"/>
-                                                </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vvZ-iq-OKA">
                                                 <rect key="frame" x="-2" y="100" width="164" height="31"/>
                                                 <color key="thumbTintColor" systemColor="systemBlueColor"/>
-                                                <connections>
-                                                    <action selector="rgbSlider:" destination="lQ1-Ez-dH2" eventType="valueChanged" id="eBS-ah-Ac7"/>
-                                                </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>

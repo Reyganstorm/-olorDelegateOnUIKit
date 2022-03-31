@@ -14,7 +14,6 @@
 		E8B5320227EE05370068C7B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B5320127EE05370068C7B2 /* Assets.xcassets */; };
 		E8B5320527EE05370068C7B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B5320327EE05370068C7B2 /* LaunchScreen.storyboard */; };
 		E8B5321227EE090D0068C7B2 /* SettingColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5321127EE090D0068C7B2 /* SettingColorViewController.swift */; };
-		E8B5321427EE23390068C7B2 /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5321327EE23390068C7B2 /* ColorValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		E8B5320427EE05370068C7B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8B5320627EE05370068C7B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B5321127EE090D0068C7B2 /* SettingColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorViewController.swift; sourceTree = "<group>"; };
-		E8B5321327EE23390068C7B2 /* ColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +88,6 @@
 		E8B5320E27EE08420068C7B2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E8B5321327EE23390068C7B2 /* ColorValue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,7 +183,6 @@
 			files = (
 				E8B531FD27EE05360068C7B2 /* ColorViewController.swift in Sources */,
 				E8B531F927EE05360068C7B2 /* AppDelegate.swift in Sources */,
-				E8B5321427EE23390068C7B2 /* ColorValue.swift in Sources */,
 				E8B5321227EE090D0068C7B2 /* SettingColorViewController.swift in Sources */,
 				E8B531FB27EE05360068C7B2 /* SceneDelegate.swift in Sources */,
 			);

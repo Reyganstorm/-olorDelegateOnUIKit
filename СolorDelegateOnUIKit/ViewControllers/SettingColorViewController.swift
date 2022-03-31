@@ -25,56 +25,34 @@ class SettingColorViewController: UIViewController {
     
     @IBOutlet var doneButtone: UIButton!
     
-    var colorValue: ColorValue!
+    var viewColor: UIColor!
     var delegate: SettingsColorProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = 30
         doneButtone.layer.cornerRadius = 15
-        setColor()
         
-        redTextField.delegate = self
-        greenTextField.delegate = self
-        blueTextField.delegate = self
+        colorView.backgroundColor = viewColor
         
-//        redTextField.text = String(colorValue.redValue)
-//        greenTextField.text = String(colorValue.greenValue)
-//        blueTextField.text = String(colorValue.blueValue)
-        
+        setSliders()
     }
     
-    private func setColor() {
-       colorView.backgroundColor = UIColor(
-           red: CGFloat(redSlider.value),
-           green: CGFloat(greenSlider.value),
-           blue: CGFloat(blueSlider.value),
-           alpha: 1)
-   }
-    
-    @IBAction func rgbSlider(_ sender: UISlider) {
-        setColor()
-        switch sender {
-            case redSlider:
-            redValueLabel.text = string(from: redSlider)
-            redTextField.text = string(from: redSlider)
-        
-            case greenSlider:
-            greenValueLabel.text = string(from: greenSlider)
-            greenTextField.text = string(from: greenSlider)
-        
-            default:
-            blueValueLabel.text = string(from: blueSlider)
-            blueTextField.text = string(from: blueSlider)
-        }
 
+
+    private func setSliders() {
+        let ciColor = CIColor(color: viewColor)
+        
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
     }
     
-    @IBAction func doneButtonPressed() {
-        view.endEditing(true)
-        delegate.setColorValue(for: colorValue)
-        dismiss(animated: true)
-    }
+//    @IBAction func doneButtonPressed() {
+//        view.endEditing(true)
+//        delegate.setColorValue(for: double(from: redTextField), for: double(from: greenTextField), and: double(from: blueTextField))
+//        dismiss(animated: true)
+//    }
     
     
     private func string(from slider: UISlider) -> String {
@@ -82,17 +60,6 @@ class SettingColorViewController: UIViewController {
         }
 }
 
-extension SettingColorViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let newValue = textField.text else { return }
-        guard let numberValue = Double(newValue) else { return }
-        
-        if textField == redTextField {
-            colorValue.redValue = numberValue
-        } else if textField == greenTextField {
-            colorValue.greenValue = numberValue
-        } else {
-            colorValue.blueValue = numberValue
-        }
-    }
+extension SettingColorViewController {
+   
 }
