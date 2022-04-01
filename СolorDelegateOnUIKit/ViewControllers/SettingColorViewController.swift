@@ -33,11 +33,52 @@ class SettingColorViewController: UIViewController {
         colorView.layer.cornerRadius = 30
         doneButtone.layer.cornerRadius = 15
         
+        redSlider.tintColor = .red
+        greenSlider.tintColor = .green
+        
         colorView.backgroundColor = viewColor
+        
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
         
         setSliders()
         setValue(for: redTextField, greenTextField, blueTextField)
         setValue(for: redValueLabel, greenValueLabel, blueValueLabel)
+    }
+    
+    @IBAction func rgbSlider(_ sender: UISlider) {
+        switch sender{
+        case redSlider:
+            setValue(for: redValueLabel)
+            setValue(for: redTextField)
+        case greenSlider:
+            setValue(for: greenValueLabel)
+            setValue(for: greenTextField)
+        default:
+            setValue(for: blueValueLabel)
+            setValue(for: blueTextField)
+        }
+        
+        setColor()
+    }
+    
+    
+    @IBAction func doneButtonPressed() {
+        delegate.setColorValue(colorView.backgroundColor ?? .red)
+        dismiss(animated: true)
+    }
+    
+}
+
+extension SettingColorViewController {
+    
+    private func setColor() {
+       colorView.backgroundColor = UIColor(
+           red: CGFloat(redSlider.value),
+           green: CGFloat(greenSlider.value),
+           blue: CGFloat(blueSlider.value),
+           alpha: 1)
     }
     
     private func setValue(for labels: UILabel...) {
@@ -68,42 +109,70 @@ class SettingColorViewController: UIViewController {
         blueSlider.value = Float(ciColor.blue)
     }
     
-    private func setColor() {
-       colorView.backgroundColor = UIColor(
-           red: CGFloat(redSlider.value),
-           green: CGFloat(greenSlider.value),
-           blue: CGFloat(blueSlider.value),
-           alpha: 1)
-    }
-    
-    @IBAction func rgbSlider(_ sender: UISlider) {
-        switch sender{
-        case redSlider:
-            setValue(for: redValueLabel)
-            setValue(for: redTextField)
-        case greenSlider:
-            setValue(for: greenValueLabel)
-            setValue(for: greenTextField)
-        default:
-            setValue(for: blueValueLabel)
-            setValue(for: blueTextField)
-        }
-        
-        setColor()
-    }
-    
-    
-    @IBAction func doneButtonPressed() {
-        delegate.setColorValue(colorView.backgroundColor ?? .red)
-        dismiss(animated: true)
-    }
-    
-    
+    // Значение RGB
     private func string(from slider: UISlider) -> String {
             String(format: "%.2f", slider.value)
         }
+    
+    @objc private func didTapDone() {
+        view.endEditing(true)
+    }
+    
+    private func showAlert(title: String, message: String) {
+            let alert = UIAlertController(
+                title: title,
+                message: message,
+                preferredStyle: .alert )
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        }
 }
 
-extension SettingColorViewController {
+// - MARK: UITextFieldDelegate
+extension SettingColorViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let text = textField.text else {return}
+        
+        if let currentValue = Float(text) {
+            switch textField {
+            case redTextField:
+                redSlider.setValue(currentValue, animated: true)
+            case greenTextField:
+                greenSlider.setValue(currentValue, animated: true)
+            default:
+                blueSlider.setValue(currentValue, animated: true)
+            }
+            setColor()
+            return
+        }
+        showAlert(title: "Wrong Formate", message: "Please write numbers < 1.0")
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        textField.inputAccessoryView = keyboardToolbar
+        
+        let done = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(didTapDone)
+        )
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexBarButton, done]
+    }
    
 }
