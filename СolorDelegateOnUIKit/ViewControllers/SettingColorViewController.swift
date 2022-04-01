@@ -160,6 +160,7 @@ extension SettingColorViewController: UITextFieldDelegate {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         textField.inputAccessoryView = keyboardToolbar
+        textField.keyboardType = .decimalPad
         
         let done = UIBarButtonItem(
             barButtonSystemItem: .done,
